@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--th: で始まる属性にテンプレートエンジン Tymeleaf を適用する-->
+<html xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン画面</title>
+</head>
+<body>
+    <h1>ログイン画面</h1>
+    
+    <!--message が入っているとき（true）だけ表示する-->
+    <div th:if="${errorMessage}" class="error">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <!--ログイン情報入力フォーム-->
+    <form th:action="@{/login}" th:object="${loginRequest}" method="POST">
+        <table border="1">
+            <tr>
+                <th>店舗ID</th>
+                <td><input type="text" th:field="*{storeId}" autocomplete="off" autofocus required></td>
+            </tr>
+            <tr>
+                <th>ユーザーID</th>
+                <td><input type="text" th:field="*{userId}" required></td>
+            </tr>
+        </table>
+        <input type="submit" value="ログイン">
+    </form>
+</body>
+</html>

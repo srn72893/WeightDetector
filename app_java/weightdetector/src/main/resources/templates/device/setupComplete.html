@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>セットアップ完了画面</title>
+    </head>
+    <body>
+        <h1>セットアップ完了</h1>
+        <p class="setupComplete">
+            デバイスID : <span th:text="${response.deviceId}"></span>
+            JANコード : <span th:text="${response.janCode}"></span>
+            <span th:text="${response.message}"></span>
+        </p>
+        <a th:href="@{/home}">HOMEに戻る</a>
+    </body>
+</html>

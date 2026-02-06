@@ -1,0 +1,23 @@
+# C build artifacts
+*.exe
+*.o
+*.obj
+*.out
+*.ilk
+
+# VSCode settings
+.vscode/
+
+# Backup files
+*.log
+*.pdb
+
+# Maven build output
+target/
+.mvn/wrapper/
+maven_status/
+mvnw
+mvnw.cmd
+
+# OS
+.DS_Store

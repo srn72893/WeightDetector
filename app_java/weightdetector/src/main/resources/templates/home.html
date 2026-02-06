@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>HOME画面</title>
+    </head>
+    <body>
+        <!--権限が ADMIN のとき-->
+        <div th:if="${role.isAdmin()}" class="admin">
+            <h1>管理者 HOME画面</h1>
+            <p th:text="${session.loginUser.message}"></p>
+            <a th:href="@{/device/setup}">デバイス登録</a><br>
+            品出しボタン（未実装）<br>
+            ユーザー登録・削除（未実装）<br>
+            ログアウト（未実装）<br>
+        </div>
+        <!--権限が STAFF のとき-->
+        <div th:if="${role.isStaff()}" class="staff">
+            <h1>スタッフ HOME画面</h1>
+            <p th:text="${session.loginUser.message}"></p>
+            <a th:href="@{/device/setup}">デバイス登録</a><br>
+            品出しボタン（未実装）<br>
+            ログアウト（未実装）<br>
+        </div>
+    </body>
+</html>

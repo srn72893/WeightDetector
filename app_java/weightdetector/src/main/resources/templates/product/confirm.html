@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>デバイス・商品確認ページ</title>
+    </head>
+    <body>
+        <h1>デバイス・商品確認ページ</h1>
+        <!--対象デバイス・商品検索結果の表示-->
+        セットアップ対象デバイスID : <span th:text="${session.deviceId}"></span><br>
+        商品名 : <span th:text="${response.productName}"></span><br>
+        JANコード : <span th:text="${response.janCode}"></span><br>
+        <!--セットアップに使う JAN コード（Controllerでセットしたもの）を次の Controller に渡すためバインドする-->
+        <form th:action="@{/device/setup/complete}" th:object="${deviceSetupCompleteRequest}" method="POST">
+            <input type="hidden" th:field="*{janCode}" />
+            <input type="submit" value="セットアップ登録">
+        </form>
+    </body>
+</html>

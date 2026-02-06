@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>商品検索画面</title>
+    </head>
+    <body>
+        <h1>商品検索画面</h1>
+        <!--デバイスがセットアップ済のとき-->
+        <div th:if="${response != null and response.status.name() == 'ALREADY_SETUP'}" class="alreadySetup">
+            <p th:text="${response.message}" class="alreadySetup"></p>
+            <a th:href="@{/device/setup}">デバイス検索へ戻る></a>
+        </div>
+        <!--デバイスがセットアップ可能状態のとき-->
+        <div th:if="${response != null and response.status.name() == 'AVAILABLE'}" class="available">
+            <!--対象デバイスID と 処理結果メッセージ を表示-->
+            <p>デバイスID : <span th:text="${response.deviceId}"></span></p>
+            <span th:text="${response.message}"></span><br>
+            設定する商品のJANコードを入力してください
+            <form th:action="@{/product/search}" th:object="${janVerifyRequest}" method="POST">
+                <!--JanVerifyRequest オブジェクトのフィールドに deviceSetupComplete で渡されたデバイスIDをセット-->
+                <input type="hidden" th:field="*{deviceId}" th:value="${response.deviceId}">
+                <table border="1">
+                    <tr>
+                        <th>JANコード : </th>
+                        <td><input type="text" th:field="*{janCode}" autocomplete="off" autofocus required></td>
+                    </tr>
+                </table>
+                <input type="submit" value="商品検索">
+            </form>
+        </div>
+    </body>
+</html>

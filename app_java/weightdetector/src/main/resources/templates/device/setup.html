@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>デバイス登録画面</title>
+    </head>
+    <body>
+        <h1>デバイス登録</h1>
+        <form th:action="@{/device/setup/check}" th:object="${deviceSetupCheckRequest}" method="POST">
+            <table border="1">
+                <tr>
+                    <th>デバイスID</th>
+                    <td><input type="text" th:field="*{deviceId}" autocomplete="off" autofocus required></td>
+                </tr>
+            </table>
+            <input type="submit" value="デバイス検索">
+        </form>
+    </body>
+</html>
