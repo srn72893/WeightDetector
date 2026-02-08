@@ -32,10 +32,8 @@ public class DeviceSetupService {
      * @return DeviceSetupResponse オブジェクト
      */
     public DeviceSetupCheckResponse checkSetupAvailability(DeviceSetupCheckRequest request) {
-        System.out.println("deviceId = [" + request.getDeviceId() + "]");
         //deviceId を使って DB から情報取得
-        //値が取得できない（対象デバイスが存在しないとき）は、その値を返す
-        //null なら例外処理をする
+        //戻り値が empty なら例外処理をする
         Device device = deviceRepository.findByDeviceId(request.getDeviceId()).orElseThrow(
             () -> new IllegalArgumentException("対象デバイスが存在しません : " + request.getDeviceId()));
         
